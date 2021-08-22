@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AOC2015.Managers
 {
-    class InputHandler
+    class FileInputService
     {
         private static string filePrefix = "input/";
         private static string fileSuffix = ".input";

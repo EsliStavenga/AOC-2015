@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AOC2015.Managers
 {
-    class OutputHandler
+    class FileOutputService
     {
         private static string filePrefix = "output/";
         private static string fileSuffix = ".output";

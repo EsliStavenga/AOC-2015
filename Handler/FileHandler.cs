@@ -24,7 +24,7 @@ namespace AOC2015.Managers
                 {
                     return File.ReadAllText(filename);
                 }
-                catch (DirectoryNotFoundException e)
+                catch (DirectoryNotFoundException)
                 {
                     createDirectoryForFile(filename);
                     throw new FileNotFoundException(Path.GetFullPath(filename));

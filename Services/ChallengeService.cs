@@ -7,21 +7,28 @@ using AOC2015.Exceptions;
 
 namespace AOC2015.Managers
 {
-    class ChallengeManager
+    public delegate void CallAllDaysCallback(string target);
+
+    class ChallengeService
     {
         private List<string> allDayParts;
 
         /// <summary>
         /// Load all days on init
         /// </summary>
-        public ChallengeManager()
+        public ChallengeService()
         {
             this.allDayParts = this.getDayNamespaces();
+            this.allDayParts.Sort(); //sort so it's exeucted from day1 part1 downwards
         }
 
 
-
-        public void callAllDays(string method = "Solution")
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="callback">A callback that will provide each function called</param>
+        public void CallAllDays(string method = "Solution", CallAllDaysCallback callback = null)
         {
             this.allDayParts.ForEach(dayPart =>
             {
@@ -32,6 +39,7 @@ namespace AOC2015.Managers
                 // Retrieve the method you are looking for
                 MethodInfo methodInfo = type.GetMethod(method);
 
+                //some imports created "shadow classes", skip those
                 if(methodInfo == null)
                 {
                     return;
@@ -42,12 +50,15 @@ namespace AOC2015.Managers
                     throw new InvalidTypeException(String.Format("Return type of {0}::{1} must be string", dayPart, method));
                 }
 
+                
+                callback(String.Format("{0}::{1}", dayPart, method));
+
                 // Invoke the method on the instance we created above
                 string result = (string) methodInfo.Invoke(obj, new string[] {
-                    InputHandler.ReadInput(dayPart)               
+                    FileInputService.ReadInput(dayPart)               
                 });
 
-                OutputHandler.WriteOutput(dayPart, result);
+                FileOutputService.WriteOutput(dayPart, result);
             });
 
         }

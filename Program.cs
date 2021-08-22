@@ -9,8 +9,11 @@ namespace AOC2015
     {
         static void Main(string[] args)
         {
-            ChallengeManager c = new ChallengeManager();
-            c.callAllDays();
+            ChallengeService c = new ChallengeService();
+            c.CallAllDays(callback: new CallAllDaysCallback((target) =>
+            {
+                Console.WriteLine("Processing " + target);
+            }));
         }
 
     }
