@@ -32,7 +32,10 @@ namespace AOC2015.Managers
             }
             catch(FileNotFoundException e)
             {
+                ConsoleColor originalConsoleColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Error.WriteLine(e.Message);
+                Console.ForegroundColor = originalConsoleColor;
                 return "";
             }
         }
