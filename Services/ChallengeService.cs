@@ -68,7 +68,7 @@ namespace AOC2015.Managers
             Assembly asm = Assembly.GetExecutingAssembly();
             string mainNamespace = asm.GetName().Name;
 
-            return (new List<Type>(asm.GetTypes())).FindAll(x => x.Namespace.StartsWith(mainNamespace + ".Day")).Select(x => x.FullName).ToList();
+            return (new List<Type>(asm.GetTypes())).FindAll(x => x.Namespace != null && x.Namespace.StartsWith(mainNamespace + ".Day")).Select(x => x.FullName).ToList();
         }
 
 
