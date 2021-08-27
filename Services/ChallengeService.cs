@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using AOC2015.Exceptions;
 
-namespace AOC2015.Managers
+namespace AOC2015.Services
 {
     public delegate void CallAllDaysCallback(string target);
 

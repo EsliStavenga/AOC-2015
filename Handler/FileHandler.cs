@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.IO;
 
-namespace AOC2015.Managers
+namespace AOC2015.Services
 {
     internal class FileHandler
     {
